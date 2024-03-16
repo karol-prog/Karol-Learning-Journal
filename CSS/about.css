@@ -6,6 +6,7 @@
 
 :root {
   --header-color: #0e0e0e;
+  --header-bg-color: #f8f9fa;
   --body-color: #090909;
   --hero-color: #f9fafb;
   --footer-color: #202020;
@@ -21,10 +22,11 @@ body {
 
 /* header */
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem;
+  position: fixed;
+  background-color: var(--header-bg-color);
+  width: 100%;
+  border-bottom: 1px solid black;
+  z-index: 1;
 }
 
 a {
@@ -43,6 +45,15 @@ i {
 
 button {
   font-family: var(--ff-sans);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 1.5rem;
 }
 
 .logo {
@@ -79,13 +90,16 @@ button {
 .hero-post {
   display: grid;
   grid-template-columns: 1.25em auto 1.25em;
-  margin: 1.875rem auto;
+  margin: 0 auto 1.75rem;
+  padding-top: 100px;
 }
 
 .hero-about-image {
+  width: 150px;
   object-fit: cover;
   grid-column: 2 / -2;
   margin-bottom: 1rem;
+  border-radius: 50%;
 }
 
 .featured-post {

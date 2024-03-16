@@ -7,22 +7,28 @@
     display: block;
   }
 
+  header {
+    width: 100%;
+    margin: 0 auto;
+  }
+
   /* MAIN */
   /* hero section */
   .hero-post {
     display: grid;
-    grid-template-columns: 1.25em minmax(auto, 800px) auto 1.25em;
+    grid-template-columns: 1.25em 1fr minmax(600px, 1fr) 1fr 1.25em;
   }
 
   .featured-post {
-    grid-column: 2 / 3;
+    grid-column: 3;
   }
 
   .container {
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    max-width: 80%;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    max-width: 100rem;
     gap: 1rem;
+    padding: 0 2rem;
   }
 }
