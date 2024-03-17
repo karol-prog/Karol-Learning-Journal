@@ -214,6 +214,7 @@ button {
 
 .viewmore-btn {
   border: none;
+  background: none;
   color: var(--body-color);
   font-size: 1em;
   font-weight: 900;
