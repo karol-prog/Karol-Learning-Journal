@@ -13,7 +13,7 @@ export const projects = [
     date: "January 10, 2024",
     link: "https://karol-passgen.netlify.app/",
     description:
-      "My first project was with JavaScript. This project not only solidified my grasp of JavaScript fundamentals but also provided practical experience in implementing algorithmic logic.",
+      "My first project with JavaScript. This project not only solidified my grasp of JavaScript fundamentals but also provided practical experience in implementing algorithmic logic.",
   },
   {
     title: "Rock Paper Scissors",

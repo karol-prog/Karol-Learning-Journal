@@ -1,59 +1,44 @@
 //target the div container where all projects will be display
 const container = document.querySelector(".container");
 
-//get only 3 projects to display on the site
+// Function to generate HTML for a single project
+function generateProjectHTML({ title, image, date, link, description }) {
+  return `
+    <section class="article-posts">
+      <img class="article-image" src="${image}" alt="post image" />
+      <p class="post-info-article">${date}</p>
+      <h1 class="post-title-article"><a href="${link}" target="_blank">${title}</a></h1>
+      <p class="article-post">${description}</p>
+    </section>
+  `;
+}
+
+//for how many projects are displayed
+let projectsDisplayed = 0;
+
+// Display only the first 3 projects
 export function firstProjectsToSee(projectsData) {
-  //i dont know why slice dont work as I want so i start on oposite end of array and end on 3 index
-  const projectSlice = projectsData.splice(-projectsData.length, 3);
-  //iterate over slice arr
-  projectSlice.forEach((item) => {
-    let firstProjectFeed = "";
-    //destructing the array of objects
-    const { title, image, date, link, description } = item;
-    //assign the variable to boiler plate
-    firstProjectFeed = `
-    <section class="article-posts">
-    <img
-      class="article-image"
-      src="${image}"
-      alt="post image"
-    />
-    <p class="post-info-article">${date}</p>
-    <h1 class="post-title-article"><a href="${link}" target="_blank">${title}</a></h1>
-    <p class="article-post">
-      ${description}"
-    </p>
-  </section>
-    `;
-    //write it to container div
-    container.innerHTML += firstProjectFeed;
+  //take first three objects from array
+  const firstThreeProjects = projectsData.slice(0, 3);
+  //iterate over them and write in to inner HTML of container with function above nad increment the variable projectsDisplayed
+  firstThreeProjects.forEach((item) => {
+    container.innerHTML += generateProjectHTML(item);
+    //3 projects are displayed
+    projectsDisplayed++;
   });
 }
 
-// all projects to dispaly after clicking on view more
+// Display all projects
 export function projectsToHtml(projectsData) {
-  projectsData.forEach((item) => {
-    let projectFeed = "";
-    //destructing the array of objects
-    const { title, image, date, link, description } = item;
-    //assign the variable to boiler plate
-    projectFeed = `
-    <section class="article-posts">
-    <img
-      class="article-image"
-      src="${image}"
-      alt="post image"
-    />
-    <p class="post-info-article">${date}</p>
-    <h1 class="post-title-article"><a href="${link}" target="_blank">${title}</a></h1>
-    <p class="article-post">
-      ${description}"
-    </p>
-  </section>
-    `;
-    //write it to container div
-    container.innerHTML += projectFeed;
+  // another projects in array,
+  const nextProjects = projectsData.slice(
+    projectsDisplayed,
+    projectsData.length
+  );
+  //iterate over this projects and write them into HTML container with function above and increment projectDisplayed
+  nextProjects.forEach((item) => {
+    container.innerHTML += generateProjectHTML(item);
+    //another 3 projects added
+    projectsDisplayed++;
   });
 }
-
-//I am repeating my self in this two function but i try to only make the firstProjectsToSee that only returns the slice variable and call it in the home.js, where i define that function to variable and try to pass it like argument to projectsToHtml but it returning undefined. :(
